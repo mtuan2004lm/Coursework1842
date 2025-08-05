@@ -23,7 +23,7 @@
                 <td width:="75" class="center aligened">
                 <router-link :to="{ name: 'edit',params: { id: word._id}}">Edit </router-link></td>
                 <td width:="75" class="center aligened" @click.prevent="onDestroy(word._id)">
-                <a :href="`/words/${word._id}`">Destroy</a></td>
+                <a :href="`/word/${word._id}`">Destroy</a></td>
             </tr>
         </table>
     </div>
@@ -45,7 +45,7 @@ export default {
         if (!sure) return;
         await api.deleteWord(id);
         this.flash('Word deleted sucessfully!', 'success');
-        const newWords = this.word.filter(word => word._id !== id);
+        const newWords = this.words.filter(word => word._id !== id);
         this.words =newWords;
     }
   },
